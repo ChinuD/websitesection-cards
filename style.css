@@ -1,0 +1,262 @@
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+}  
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    width: 100vw;
+    background-color: black;
+}
+.container{
+    padding-top: 20px;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid white; */
+    text-align: center;
+}
+
+#heading{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.president, .vice-president, .team-leaders{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid white; */
+}
+
+.vice-president{
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.team-leaders{
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.card {
+    color: white;
+    background: #000000;
+    width: 300px;
+    height: 400px;
+    padding: 3px;
+    padding-top: 10px;
+    position: relative;
+    border-radius:10px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5em;
+    /* color: rgb(88 199 250 / 0%); */
+    cursor: pointer;
+    font-family: cursive;
+  }
+  .card::before {
+    content: "";
+    width: 104%;
+    height: 102%;
+    border-radius: 12px;
+    background-image: linear-gradient(
+      var(--rotate)
+      , #5ddcff, #3c67e3 43%, #4e00c2);
+      position: absolute;
+      z-index: -1;
+      top: -1%;
+      left: -2%;
+      animation: spin 2.5s linear infinite;
+  }
+  
+  .card::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--card-height) / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(var(--card-height) / 6));
+    background-image: linear-gradient(
+      var(--rotate)
+      , #5ddcff, #3c67e3 43%, #4e00c2);
+      opacity: 1;
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }
+
+  .card img{
+    border-radius: 50%;
+    /* border: 1px solid white; */
+  }
+  
+  .name{
+    font-size: 28px;
+    margin-top: 6%;
+  }
+  
+  .designation{
+    margin-top: 10px;
+    font-size: 28px;
+}
+
+.socialContainer{
+    /* border: 1px solid white; */
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5%;
+    justify-content: space-evenly;
+}
+
+.socialContainer img{
+    width: 50px;
+    border: none;
+    background-color:black;
+    display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.socialContainer img:hover, .socialContainer img:focus, .socialContainer img:active{
+    -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+
+.linkedin img{
+    width: 60px;
+}
+
+#myTeamButton{
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 2px;
+    width: 100px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    color: white;
+    background: black;
+    display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+#myTeamButton::before{
+    content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: #DE313B;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+#myTeamButton:hover, #myTeamButton:focus, #myTeamButton:active {
+    color: white;
+  }
+  #myTeamButton:hover:before, #myTeamButton:focus:before, #myTeamButton:active:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  }
+
+
+  @media screen and (max-width:980px) {
+    .team-leaders .card{
+      width: 250px;
+    }
+  }
+
+  @media screen and (max-width: 830px) {
+    .team-leaders {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media screen and (max-width: 633px) {
+    .vice-president .card{
+      width: 250px;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .president .card{
+      width: 280px;
+    }
+    .vice-president {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .vice-president .card{
+      width: 280px;
+    }
+    .card{
+      width: 300px;
+    }
+  }
+
+  @media screen and (min-width: 981px) {
+    .team-leaders{
+      gap: 40px;
+      /* width: 80%; */
+      /* border: 1px solid white; */
+    }
+  }
